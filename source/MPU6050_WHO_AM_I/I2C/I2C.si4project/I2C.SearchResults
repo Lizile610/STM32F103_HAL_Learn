@@ -1,0 +1,645 @@
+---- husart Matches (696 in 2 files) ----
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 31 :     (#) Declare a USART_HandleTypeDef handle structure (eg. USART_HandleTypeDef husart).
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 53 :         flow control and Mode(Receiver/Transmitter) in the husart Init structure.
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 57 :              by calling the customized HAL_USART_MspInit(&husart) API.
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 229 : void USART_InitCallbacksToDefault(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 231 : static void USART_EndTxTransfer(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 232 : static void USART_EndRxTransfer(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 233 : static HAL_StatusTypeDef USART_Transmit_IT(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 234 : static HAL_StatusTypeDef USART_EndTransmit_IT(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 235 : static HAL_StatusTypeDef USART_Receive_IT(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 236 : static HAL_StatusTypeDef USART_TransmitReceive_IT(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 237 : static void USART_SetConfig(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 247 : static HAL_StatusTypeDef USART_WaitOnFlagUntilTimeout(USART_HandleTypeDef *husart, uint32_t Flag, FlagStatus Status,
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 293 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 297 : HAL_StatusTypeDef HAL_USART_Init(USART_HandleTypeDef *husart)
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart == NULL)
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_INSTANCE(husart->Instance));
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_RESET)
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->Lock = HAL_UNLOCKED;
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     USART_InitCallbacksToDefault(husart);
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->MspInitCallback == NULL)
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->MspInitCallback = HAL_USART_MspInit;
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->MspInitCallback(husart);
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     HAL_USART_MspInit(husart);
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State = HAL_USART_STATE_BUSY;
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   USART_SetConfig(husart);
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR2, USART_CR2_LINEN);
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR3, (USART_CR3_SCEN | USART_CR3_HDSEL | USART_CR3_IREN));
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   __HAL_USART_ENABLE(husart);
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_Init in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State = HAL_USART_STATE_READY;
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 352 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 356 : HAL_StatusTypeDef HAL_USART_DeInit(USART_HandleTypeDef *husart)
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart == NULL)
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_INSTANCE(husart->Instance));
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State = HAL_USART_STATE_BUSY;
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   __HAL_USART_DISABLE(husart);
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->MspDeInitCallback == NULL)
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->MspDeInitCallback = HAL_USART_MspDeInit;
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->MspDeInitCallback(husart);
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   HAL_USART_MspDeInit(husart);
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State = HAL_USART_STATE_RESET;
+HAL_USART_DeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   __HAL_UNLOCK(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 395 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 399 : __weak void HAL_USART_MspInit(USART_HandleTypeDef *husart)
+HAL_USART_MspInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   UNUSED(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 410 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 414 : __weak void HAL_USART_MspDeInit(USART_HandleTypeDef *husart)
+HAL_USART_MspDeInit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   UNUSED(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 429 :   * @param  husart usart handle
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 444 : HAL_StatusTypeDef HAL_USART_RegisterCallback(USART_HandleTypeDef *husart, HAL_USART_CallbackIDTypeDef CallbackID,
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode |= HAL_USART_ERROR_INVALID_CALLBACK;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->TxHalfCpltCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->TxCpltCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->RxHalfCpltCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->RxCpltCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->TxRxCpltCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->ErrorCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->AbortCpltCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->MspInitCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->MspDeInitCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->ErrorCode |= HAL_USART_ERROR_INVALID_CALLBACK;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   else if (husart->State == HAL_USART_STATE_RESET)
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->MspInitCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->MspDeInitCallback = pCallback;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->ErrorCode |= HAL_USART_ERROR_INVALID_CALLBACK;
+HAL_USART_RegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode |= HAL_USART_ERROR_INVALID_CALLBACK;
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 544 :   * @param  husart usart handle
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 558 : HAL_StatusTypeDef HAL_USART_UnRegisterCallback(USART_HandleTypeDef *husart, HAL_USART_CallbackIDTypeDef CallbackID)
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->TxHalfCpltCallback = HAL_USART_TxHalfCpltCallback;               /* Legacy weak  TxHalfCpltCallback       */
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->TxCpltCallback = HAL_USART_TxCpltCallback;                       /* Legacy weak TxCpltCallback            */
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->RxHalfCpltCallback = HAL_USART_RxHalfCpltCallback;               /* Legacy weak RxHalfCpltCallback        */
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->RxCpltCallback = HAL_USART_RxCpltCallback;                       /* Legacy weak RxCpltCallback            */
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->TxRxCpltCallback = HAL_USART_TxRxCpltCallback;                   /* Legacy weak TxRxCpltCallback            */
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->ErrorCallback = HAL_USART_ErrorCallback;                         /* Legacy weak ErrorCallback             */
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->AbortCpltCallback = HAL_USART_AbortCpltCallback;                 /* Legacy weak AbortCpltCallback         */
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->MspInitCallback = HAL_USART_MspInit;                             /* Legacy weak MspInitCallback           */
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->MspDeInitCallback = HAL_USART_MspDeInit;                         /* Legacy weak MspDeInitCallback         */
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->ErrorCode |= HAL_USART_ERROR_INVALID_CALLBACK;
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   else if (husart->State == HAL_USART_STATE_RESET)
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->MspInitCallback = HAL_USART_MspInit;
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->MspDeInitCallback = HAL_USART_MspDeInit;
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->ErrorCode |= HAL_USART_ERROR_INVALID_CALLBACK;
+HAL_USART_UnRegisterCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode |= HAL_USART_ERROR_INVALID_CALLBACK;
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 733 :   * @param  husart  Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 740 : HAL_StatusTypeDef HAL_USART_Transmit(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint16_t Size, uint32_t Timeout)
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_LOCK(husart);
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_BUSY_TX;
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferSize = Size;
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferCount = Size;
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if ((husart->Init.WordLength == USART_WORDLENGTH_9B) && (husart->Init.Parity == USART_PARITY_NONE))
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     while (husart->TxXferCount > 0U)
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (USART_WaitOnFlagUntilTimeout(husart, USART_FLAG_TXE, RESET, tickstart, Timeout) != HAL_OK)
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->Instance->DR = (uint16_t)(*ptxdata16bits & (uint16_t)0x01FF);
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->Instance->DR = (uint8_t)(*ptxdata8bits & (uint8_t)0xFF);
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->TxXferCount--;
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (USART_WaitOnFlagUntilTimeout(husart, USART_FLAG_TC, RESET, tickstart, Timeout) != HAL_OK)
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_READY;
+HAL_USART_Transmit in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_UNLOCK(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 822 :   * @param  husart  Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 829 : HAL_StatusTypeDef HAL_USART_Receive(USART_HandleTypeDef *husart, uint8_t *pRxData, uint16_t Size, uint32_t Timeout)
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_LOCK(husart);
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_BUSY_RX;
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferSize = Size;
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferCount = Size;
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if ((husart->Init.WordLength == USART_WORDLENGTH_9B) && (husart->Init.Parity == USART_PARITY_NONE))
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     while (husart->RxXferCount > 0U)
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (USART_WaitOnFlagUntilTimeout(husart, USART_FLAG_TXE, RESET, tickstart, Timeout) != HAL_OK)
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->Instance->DR = (DUMMY_DATA & (uint16_t)0x0FF);
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (USART_WaitOnFlagUntilTimeout(husart, USART_FLAG_RXNE, RESET, tickstart, Timeout) != HAL_OK)
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         *prxdata16bits = (uint16_t)(husart->Instance->DR & (uint16_t)0x01FF);
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         if ((husart->Init.WordLength == USART_WORDLENGTH_9B) || ((husart->Init.WordLength == USART_WORDLENGTH_8B) && (husart->Init.Parity == USART_PARITY_NONE)))
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           *prxdata8bits = (uint8_t)(husart->Instance->DR & (uint8_t)0x0FF);
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           *prxdata8bits = (uint8_t)(husart->Instance->DR & (uint8_t)0x07F);
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->RxXferCount--;
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_READY;
+HAL_USART_Receive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_UNLOCK(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 922 :   * @param  husart  Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 930 : HAL_StatusTypeDef HAL_USART_TransmitReceive(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint8_t *pRxData,
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if ((husart->Init.WordLength == USART_WORDLENGTH_9B) && (husart->Init.Parity == USART_PARITY_NONE))
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_LOCK(husart);
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_BUSY_RX;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferSize = Size;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferSize = Size;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferCount = Size;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferCount = Size;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if ((husart->Init.WordLength == USART_WORDLENGTH_9B) && (husart->Init.Parity == USART_PARITY_NONE))
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     rxdatacount = husart->RxXferCount;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     while ((husart->TxXferCount > 0U) || (rxdatacount > 0U))
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (husart->TxXferCount > 0U)
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         if (USART_WaitOnFlagUntilTimeout(husart, USART_FLAG_TXE, RESET, tickstart, Timeout) != HAL_OK)
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           husart->Instance->DR = (uint16_t)(*ptxdata16bits & (uint16_t)0x01FF);
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           husart->Instance->DR = (uint8_t)(*ptxdata8bits & (uint8_t)0xFF);
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->TxXferCount--;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (husart->RxXferCount > 0U)
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         if (USART_WaitOnFlagUntilTimeout(husart, USART_FLAG_RXNE, RESET, tickstart, Timeout) != HAL_OK)
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           *prxdata16bits = (uint16_t)(husart->Instance->DR & (uint16_t)0x01FF);
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           if ((husart->Init.WordLength == USART_WORDLENGTH_9B) || ((husart->Init.WordLength == USART_WORDLENGTH_8B) && (husart->Init.Parity == USART_PARITY_NONE)))
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :             *prxdata8bits = (uint8_t)(husart->Instance->DR & (uint8_t)0x0FF);
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :             *prxdata8bits = (uint8_t)(husart->Instance->DR & (uint8_t)0x07F);
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->RxXferCount--;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       rxdatacount = husart->RxXferCount;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_READY;
+HAL_USART_TransmitReceive in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_UNLOCK(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1063 :   * @param  husart  Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1070 : HAL_StatusTypeDef HAL_USART_Transmit_IT(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint16_t Size)
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_LOCK(husart);
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->pTxBuffPtr = pTxData;
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferSize = Size;
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferCount = Size;
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_BUSY_TX;
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :        The __HAL_USART_ENABLE_IT(husart, USART_IT_ERR) can be used to enable the Frame error,
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_UNLOCK(husart);
+HAL_USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR1, USART_CR1_TXEIE);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1117 :   * @param  husart  Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1123 : HAL_StatusTypeDef HAL_USART_Receive_IT(USART_HandleTypeDef *husart, uint8_t *pRxData, uint16_t Size)
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_LOCK(husart);
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->pRxBuffPtr = pRxData;
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferSize = Size;
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferCount = Size;
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_BUSY_RX;
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_UNLOCK(husart);
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->Init.Parity != USART_PARITY_NONE)
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       SET_BIT(husart->Instance->CR1, USART_CR1_PEIE | USART_CR1_RXNEIE);
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       SET_BIT(husart->Instance->CR1, USART_CR1_RXNEIE);
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR3, USART_CR3_EIE);
+HAL_USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->Instance->DR = (DUMMY_DATA & (uint16_t)0x01FF);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1174 :   * @param  husart  Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1181 : HAL_StatusTypeDef HAL_USART_TransmitReceive_IT(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint8_t *pRxData,
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_LOCK(husart);
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->pRxBuffPtr = pRxData;
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferSize = Size;
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferCount = Size;
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->pTxBuffPtr = pTxData;
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferSize = Size;
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferCount = Size;
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_BUSY_TX_RX;
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_UNLOCK(husart);
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR1, USART_CR1_RXNEIE);
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->Init.Parity != USART_PARITY_NONE)
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       SET_BIT(husart->Instance->CR1, USART_CR1_PEIE);
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR3, USART_CR3_EIE);
+HAL_USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR1, USART_CR1_TXEIE);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1234 :   * @param  husart  Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1240 : HAL_StatusTypeDef HAL_USART_Transmit_DMA(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint16_t Size)
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_LOCK(husart);
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->pTxBuffPtr = pTxData;
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferSize = Size;
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferCount = Size;
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_BUSY_TX;
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferCpltCallback = USART_DMATransmitCplt;
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferHalfCpltCallback = USART_DMATxHalfCplt;
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferErrorCallback = USART_DMAError;
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferAbortCallback = NULL;
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     HAL_DMA_Start_IT(husart->hdmatx, *(const uint32_t *)tmp, (uint32_t)&husart->Instance->DR, Size);
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_USART_CLEAR_FLAG(husart, USART_FLAG_TC);
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_UNLOCK(husart);
+HAL_USART_Transmit_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1299 :   * @param  husart  Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1307 : HAL_StatusTypeDef HAL_USART_Receive_DMA(USART_HandleTypeDef *husart, uint8_t *pRxData, uint16_t Size)
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_LOCK(husart);
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->pRxBuffPtr = pRxData;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferSize = Size;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->pTxBuffPtr = pRxData;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferSize = Size;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_BUSY_RX;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmarx->XferCpltCallback = USART_DMAReceiveCplt;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmarx->XferHalfCpltCallback = USART_DMARxHalfCplt;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmarx->XferErrorCallback = USART_DMAError;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmarx->XferAbortCallback = NULL;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferHalfCpltCallback = NULL;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferCpltCallback = NULL;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferErrorCallback = USART_DMAError;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferAbortCallback = NULL;
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     HAL_DMA_Start_IT(husart->hdmarx, (uint32_t)&husart->Instance->DR, *(uint32_t *)tmp, Size);
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     HAL_DMA_Start_IT(husart->hdmatx, *(uint32_t *)tmp, (uint32_t)&husart->Instance->DR, Size);
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_USART_CLEAR_OREFLAG(husart);
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_UNLOCK(husart);
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->Init.Parity != USART_PARITY_NONE)
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       SET_BIT(husart->Instance->CR1, USART_CR1_PEIE);
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR3, USART_CR3_EIE);
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR3, USART_CR3_DMAR);
+HAL_USART_Receive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1397 :   * @param  husart  Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1405 : HAL_StatusTypeDef HAL_USART_TransmitReceive_DMA(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint8_t *pRxData,
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_READY)
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_LOCK(husart);
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->pRxBuffPtr = pRxData;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferSize = Size;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->pTxBuffPtr = pTxData;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferSize = Size;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_BUSY_TX_RX;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmarx->XferCpltCallback = USART_DMAReceiveCplt;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmarx->XferHalfCpltCallback = USART_DMARxHalfCplt;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferCpltCallback = USART_DMATransmitCplt;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferHalfCpltCallback = USART_DMATxHalfCplt;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmatx->XferErrorCallback = USART_DMAError;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmarx->XferErrorCallback = USART_DMAError;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->hdmarx->XferAbortCallback = NULL;
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     HAL_DMA_Start_IT(husart->hdmarx, (uint32_t)&husart->Instance->DR, *(const uint32_t *)tmp, Size);
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     HAL_DMA_Start_IT(husart->hdmatx, *(const uint32_t *)tmp, (uint32_t)&husart->Instance->DR, Size);
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_USART_CLEAR_FLAG(husart, USART_FLAG_TC);
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_USART_CLEAR_OREFLAG(husart);
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     __HAL_UNLOCK(husart);
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->Init.Parity != USART_PARITY_NONE)
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       SET_BIT(husart->Instance->CR1, USART_CR1_PEIE);
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR3, USART_CR3_EIE);
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR3, USART_CR3_DMAR);
+HAL_USART_TransmitReceive_DMA in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     SET_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1492 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1496 : HAL_StatusTypeDef HAL_USART_DMAPause(USART_HandleTypeDef *husart)
+HAL_USART_DMAPause in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   __HAL_LOCK(husart);
+HAL_USART_DMAPause in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+HAL_USART_DMAPause in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   __HAL_UNLOCK(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1512 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1516 : HAL_StatusTypeDef HAL_USART_DMAResume(USART_HandleTypeDef *husart)
+HAL_USART_DMAResume in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   __HAL_LOCK(husart);
+HAL_USART_DMAResume in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   SET_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+HAL_USART_DMAResume in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   __HAL_UNLOCK(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1532 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1536 : HAL_StatusTypeDef HAL_USART_DMAStop(USART_HandleTypeDef *husart)
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   dmarequest = HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAT);
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if ((husart->State == HAL_USART_STATE_BUSY_TX) && dmarequest)
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     USART_EndTxTransfer(husart);
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->hdmatx != NULL)
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_DMA_Abort(husart->hdmatx);
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   dmarequest = HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAR);
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if ((husart->State == HAL_USART_STATE_BUSY_RX) && dmarequest)
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     USART_EndRxTransfer(husart);
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->hdmarx != NULL)
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_DMA_Abort(husart->hdmarx);
+HAL_USART_DMAStop in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAR);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1582 :   * @param  husart USART handle.
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1593 : HAL_StatusTypeDef HAL_USART_Abort(USART_HandleTypeDef *husart)
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR1, (USART_CR1_RXNEIE | USART_CR1_PEIE | USART_CR1_TXEIE | USART_CR1_TCIE));
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR3, USART_CR3_EIE);
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAT))
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->hdmatx != NULL)
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->hdmatx->XferAbortCallback = NULL;
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_DMA_Abort(husart->hdmatx);
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAR))
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAR);
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->hdmarx != NULL)
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->hdmarx->XferAbortCallback = NULL;
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_DMA_Abort(husart->hdmarx);
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxXferCount = 0x00U;
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->RxXferCount = 0x00U;
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   /* Restore husart->State to Ready */
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State  = HAL_USART_STATE_READY;
+HAL_USART_Abort in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->ErrorCode = HAL_USART_ERROR_NONE;
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1646 :   * @param  husart USART handle.
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1659 : HAL_StatusTypeDef HAL_USART_Abort_IT(USART_HandleTypeDef *husart)
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR1, (USART_CR1_RXNEIE | USART_CR1_PEIE | USART_CR1_TXEIE | USART_CR1_TCIE));
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR3, USART_CR3_EIE);
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->hdmatx != NULL)
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAT))
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->hdmatx->XferAbortCallback = USART_DMATxAbortCallback;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->hdmatx->XferAbortCallback = NULL;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->hdmarx != NULL)
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAR))
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->hdmarx->XferAbortCallback = USART_DMARxAbortCallback;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->hdmarx->XferAbortCallback = NULL;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAT))
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->hdmatx != NULL)
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (HAL_DMA_Abort_IT(husart->hdmatx) != HAL_OK)
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->hdmatx->XferAbortCallback = NULL;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAR))
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAR);
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->hdmarx != NULL)
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (HAL_DMA_Abort_IT(husart->hdmarx) != HAL_OK)
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->hdmarx->XferAbortCallback = NULL;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferCount = 0x00U;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferCount = 0x00U;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     /* Restore husart->State to Ready */
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State  = HAL_USART_STATE_READY;
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->AbortCpltCallback(husart);
+HAL_USART_Abort_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     HAL_USART_AbortCpltCallback(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1774 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1778 : void HAL_USART_IRQHandler(USART_HandleTypeDef *husart)
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   uint32_t isrflags = READ_REG(husart->Instance->SR);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   uint32_t cr1its   = READ_REG(husart->Instance->CR1);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   uint32_t cr3its   = READ_REG(husart->Instance->CR3);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (husart->State == HAL_USART_STATE_BUSY_RX)
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         USART_Receive_IT(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         USART_TransmitReceive_IT(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->ErrorCode |= HAL_USART_ERROR_PE;
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->ErrorCode |= HAL_USART_ERROR_NE;
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->ErrorCode |= HAL_USART_ERROR_FE;
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->ErrorCode |= HAL_USART_ERROR_ORE;
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->ErrorCode != HAL_USART_ERROR_NONE)
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         if (husart->State == HAL_USART_STATE_BUSY_RX)
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           USART_Receive_IT(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           USART_TransmitReceive_IT(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       dmarequest = HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAR);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (((husart->ErrorCode & HAL_USART_ERROR_ORE) != RESET) || dmarequest)
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         USART_EndRxTransfer(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         if (HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAR))
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAR);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           if (husart->hdmarx != NULL)
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :             husart->hdmarx->XferAbortCallback = USART_DMAAbortOnError;
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :             if (HAL_DMA_Abort_IT(husart->hdmarx) != HAL_OK)
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :               husart->hdmarx->XferAbortCallback(husart->hdmarx);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :             husart->ErrorCallback(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :             HAL_USART_ErrorCallback(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           husart->ErrorCallback(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           HAL_USART_ErrorCallback(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->ErrorCallback(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         HAL_USART_ErrorCallback(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->ErrorCode = HAL_USART_ERROR_NONE;
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->State == HAL_USART_STATE_BUSY_TX)
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       USART_Transmit_IT(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       USART_TransmitReceive_IT(husart);
+HAL_USART_IRQHandler in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     USART_EndTransmit_IT(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1936 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1940 : __weak void HAL_USART_TxCpltCallback(USART_HandleTypeDef *husart)
+HAL_USART_TxCpltCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   UNUSED(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1951 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1955 : __weak void HAL_USART_TxHalfCpltCallback(USART_HandleTypeDef *husart)
+HAL_USART_TxHalfCpltCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   UNUSED(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1966 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1970 : __weak void HAL_USART_RxCpltCallback(USART_HandleTypeDef *husart)
+HAL_USART_RxCpltCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   UNUSED(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1981 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1985 : __weak void HAL_USART_RxHalfCpltCallback(USART_HandleTypeDef *husart)
+HAL_USART_RxHalfCpltCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   UNUSED(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 1996 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2000 : __weak void HAL_USART_TxRxCpltCallback(USART_HandleTypeDef *husart)
+HAL_USART_TxRxCpltCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   UNUSED(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2011 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2015 : __weak void HAL_USART_ErrorCallback(USART_HandleTypeDef *husart)
+HAL_USART_ErrorCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   UNUSED(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2026 :   * @param  husart USART handle.
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2029 : __weak void HAL_USART_AbortCpltCallback(USART_HandleTypeDef *husart)
+HAL_USART_AbortCpltCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   UNUSED(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2064 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2068 : HAL_USART_StateTypeDef HAL_USART_GetState(const USART_HandleTypeDef *husart)
+HAL_USART_GetState in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   return husart->State;
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2075 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2079 : uint32_t HAL_USART_GetError(const USART_HandleTypeDef *husart)
+HAL_USART_GetError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   return husart->ErrorCode;
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2094 :   * @param  husart USART handle.
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2098 : void USART_InitCallbacksToDefault(USART_HandleTypeDef *husart)
+USART_InitCallbacksToDefault in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxHalfCpltCallback        = HAL_USART_TxHalfCpltCallback;        /* Legacy weak TxHalfCpltCallback        */
+USART_InitCallbacksToDefault in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxCpltCallback            = HAL_USART_TxCpltCallback;            /* Legacy weak TxCpltCallback            */
+USART_InitCallbacksToDefault in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->RxHalfCpltCallback        = HAL_USART_RxHalfCpltCallback;        /* Legacy weak RxHalfCpltCallback        */
+USART_InitCallbacksToDefault in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->RxCpltCallback            = HAL_USART_RxCpltCallback;            /* Legacy weak RxCpltCallback            */
+USART_InitCallbacksToDefault in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxRxCpltCallback          = HAL_USART_TxRxCpltCallback;          /* Legacy weak TxRxCpltCallback          */
+USART_InitCallbacksToDefault in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->ErrorCallback             = HAL_USART_ErrorCallback;             /* Legacy weak ErrorCallback             */
+USART_InitCallbacksToDefault in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->AbortCpltCallback         = HAL_USART_AbortCpltCallback;         /* Legacy weak AbortCpltCallback         */
+USART_DMATransmitCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   USART_HandleTypeDef *husart = (USART_HandleTypeDef *)((DMA_HandleTypeDef *)hdma)->Parent;
+USART_DMATransmitCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->TxXferCount = 0U;
+USART_DMATransmitCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->State == HAL_USART_STATE_BUSY_TX)
+USART_DMATransmitCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+USART_DMATransmitCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       SET_BIT(husart->Instance->CR1, USART_CR1_TCIE);
+USART_DMATransmitCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->State == HAL_USART_STATE_BUSY_TX)
+USART_DMATransmitCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->TxCpltCallback(husart);
+USART_DMATransmitCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_USART_TxCpltCallback(husart);
+USART_DMATxHalfCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   USART_HandleTypeDef *husart = (USART_HandleTypeDef *)((DMA_HandleTypeDef *)hdma)->Parent;
+USART_DMATxHalfCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxHalfCpltCallback(husart);
+USART_DMATxHalfCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   HAL_USART_TxHalfCpltCallback(husart);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   USART_HandleTypeDef *husart = (USART_HandleTypeDef *)((DMA_HandleTypeDef *)hdma)->Parent;
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferCount = 0x00U;
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR1, USART_CR1_PEIE);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR3, USART_CR3_EIE);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAR);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     CLEAR_BIT(husart->Instance->CR3, USART_CR3_DMAT);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->State == HAL_USART_STATE_BUSY_RX)
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->RxCpltCallback(husart);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_USART_RxCpltCallback(husart);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->TxRxCpltCallback(husart);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_USART_TxRxCpltCallback(husart);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->State = HAL_USART_STATE_READY;
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->State == HAL_USART_STATE_BUSY_RX)
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->RxCpltCallback(husart);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_USART_RxCpltCallback(husart);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->TxRxCpltCallback(husart);
+USART_DMAReceiveCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_USART_TxRxCpltCallback(husart);
+USART_DMARxHalfCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   USART_HandleTypeDef *husart = (USART_HandleTypeDef *)((DMA_HandleTypeDef *)hdma)->Parent;
+USART_DMARxHalfCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->RxHalfCpltCallback(husart);
+USART_DMARxHalfCplt in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   HAL_USART_RxHalfCpltCallback(husart);
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   USART_HandleTypeDef *husart = (USART_HandleTypeDef *)((DMA_HandleTypeDef *)hdma)->Parent;
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->RxXferCount = 0x00U;
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxXferCount = 0x00U;
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   dmarequest = HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAT);
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if ((husart->State == HAL_USART_STATE_BUSY_TX) && dmarequest)
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     USART_EndTxTransfer(husart);
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   dmarequest = HAL_IS_BIT_SET(husart->Instance->CR3, USART_CR3_DMAR);
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if ((husart->State == HAL_USART_STATE_BUSY_RX) && dmarequest)
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     USART_EndRxTransfer(husart);
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->ErrorCode |= HAL_USART_ERROR_DMA;
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State = HAL_USART_STATE_READY;
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->ErrorCallback(husart);
+USART_DMAError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   HAL_USART_ErrorCallback(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2304 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2312 : static HAL_StatusTypeDef USART_WaitOnFlagUntilTimeout(USART_HandleTypeDef *husart, uint32_t Flag, FlagStatus Status,
+USART_WaitOnFlagUntilTimeout in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   while ((__HAL_USART_GET_FLAG(husart, Flag) ? SET : RESET) == Status)
+USART_WaitOnFlagUntilTimeout in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         CLEAR_BIT(husart->Instance->CR1, USART_CR1_TXEIE);
+USART_WaitOnFlagUntilTimeout in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         CLEAR_BIT(husart->Instance->CR1, USART_CR1_RXNEIE);
+USART_WaitOnFlagUntilTimeout in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         CLEAR_BIT(husart->Instance->CR1, USART_CR1_PEIE);
+USART_WaitOnFlagUntilTimeout in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         CLEAR_BIT(husart->Instance->CR3, USART_CR3_EIE);
+USART_WaitOnFlagUntilTimeout in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->State = HAL_USART_STATE_READY;
+USART_WaitOnFlagUntilTimeout in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         __HAL_UNLOCK(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2349 :   * @param  husart USART handle.
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2352 : static void USART_EndTxTransfer(USART_HandleTypeDef *husart)
+USART_EndTxTransfer in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR1, (USART_CR1_TXEIE | USART_CR1_TCIE));
+USART_EndTxTransfer in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   /* At end of Tx process, restore husart->State to Ready */
+USART_EndTxTransfer in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State = HAL_USART_STATE_READY;
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2363 :   * @param  husart USART handle.
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2366 : static void USART_EndRxTransfer(USART_HandleTypeDef *husart)
+USART_EndRxTransfer in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR1, (USART_CR1_RXNEIE | USART_CR1_PEIE));
+USART_EndRxTransfer in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR3, USART_CR3_EIE);
+USART_EndRxTransfer in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   /* At end of Rx process, restore husart->State to Ready */
+USART_EndRxTransfer in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State = HAL_USART_STATE_READY;
+USART_DMAAbortOnError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   USART_HandleTypeDef *husart = (USART_HandleTypeDef *)((DMA_HandleTypeDef *)hdma)->Parent;
+USART_DMAAbortOnError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->RxXferCount = 0x00U;
+USART_DMAAbortOnError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxXferCount = 0x00U;
+USART_DMAAbortOnError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->ErrorCallback(husart);
+USART_DMAAbortOnError in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   HAL_USART_ErrorCallback(husart);
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   USART_HandleTypeDef *husart = (USART_HandleTypeDef *)((DMA_HandleTypeDef *)hdma)->Parent;
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->hdmatx->XferAbortCallback = NULL;
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->hdmarx != NULL)
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->hdmarx->XferAbortCallback != NULL)
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxXferCount = 0x00U;
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->RxXferCount = 0x00U;
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->ErrorCode = HAL_USART_ERROR_NONE;
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   /* Restore husart->State to Ready */
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State  = HAL_USART_STATE_READY;
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->AbortCpltCallback(husart);
+USART_DMATxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   HAL_USART_AbortCpltCallback(husart);
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   USART_HandleTypeDef *husart = (USART_HandleTypeDef *)((DMA_HandleTypeDef *)hdma)->Parent;
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->hdmarx->XferAbortCallback = NULL;
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->hdmatx != NULL)
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->hdmatx->XferAbortCallback != NULL)
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxXferCount = 0x00U;
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->RxXferCount = 0x00U;
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->ErrorCode = HAL_USART_ERROR_NONE;
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   /* Restore husart->State to Ready */
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State  = HAL_USART_STATE_READY;
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->AbortCpltCallback(husart);
+USART_DMARxAbortCallback in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   HAL_USART_AbortCpltCallback(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2485 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2490 : static HAL_StatusTypeDef USART_Transmit_IT(USART_HandleTypeDef *husart)
+USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_BUSY_TX)
+USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if ((husart->Init.WordLength == USART_WORDLENGTH_9B) && (husart->Init.Parity == USART_PARITY_NONE))
+USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       tmp = (const uint16_t *) husart->pTxBuffPtr;
+USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->Instance->DR = (uint16_t)(*tmp & (uint16_t)0x01FF);
+USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->pTxBuffPtr += 2U;
+USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->Instance->DR = (uint8_t)(*husart->pTxBuffPtr++ & (uint8_t)0x00FF);
+USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (--husart->TxXferCount == 0U)
+USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       CLEAR_BIT(husart->Instance->CR1, USART_CR1_TXEIE);
+USART_Transmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       SET_BIT(husart->Instance->CR1, USART_CR1_TCIE);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2525 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2529 : static HAL_StatusTypeDef USART_EndTransmit_IT(USART_HandleTypeDef *husart)
+USART_EndTransmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR1, USART_CR1_TCIE);
+USART_EndTransmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR3, USART_CR3_EIE);
+USART_EndTransmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->State = HAL_USART_STATE_READY;
+USART_EndTransmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   husart->TxCpltCallback(husart);
+USART_EndTransmit_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   HAL_USART_TxCpltCallback(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2552 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2556 : static HAL_StatusTypeDef USART_Receive_IT(USART_HandleTypeDef *husart)
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_BUSY_RX)
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if ((husart->Init.WordLength == USART_WORDLENGTH_9B) && (husart->Init.Parity == USART_PARITY_NONE))
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       pdata16bits = (uint16_t *) husart->pRxBuffPtr;
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       *pdata16bits = (uint16_t)(husart->Instance->DR & (uint16_t)0x01FF);
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->pRxBuffPtr += 2U;
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       pdata8bits = (uint8_t *) husart->pRxBuffPtr;
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if ((husart->Init.WordLength == USART_WORDLENGTH_9B) || ((husart->Init.WordLength == USART_WORDLENGTH_8B) && (husart->Init.Parity == USART_PARITY_NONE)))
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         *pdata8bits = (uint8_t)(husart->Instance->DR & (uint8_t)0x00FF);
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         *pdata8bits = (uint8_t)(husart->Instance->DR & (uint8_t)0x007F);
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->pRxBuffPtr += 1U;
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->RxXferCount--;
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->RxXferCount == 0U)
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       CLEAR_BIT(husart->Instance->CR1, USART_CR1_RXNEIE);
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       CLEAR_BIT(husart->Instance->CR1, USART_CR1_PEIE);
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       CLEAR_BIT(husart->Instance->CR3, USART_CR3_EIE);
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->State = HAL_USART_STATE_READY;
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->RxCpltCallback(husart);
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_USART_RxCpltCallback(husart);
+USART_Receive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->Instance->DR = (DUMMY_DATA & (uint16_t)0x0FF);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2628 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2632 : static HAL_StatusTypeDef USART_TransmitReceive_IT(USART_HandleTypeDef *husart)
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if (husart->State == HAL_USART_STATE_BUSY_TX_RX)
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->TxXferCount != 0x00U)
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (__HAL_USART_GET_FLAG(husart, USART_FLAG_TXE) != RESET)
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         if ((husart->Init.WordLength == USART_WORDLENGTH_9B) && (husart->Init.Parity == USART_PARITY_NONE))
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           pdatatx16bits = (const uint16_t *) husart->pTxBuffPtr;
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           husart->Instance->DR = (uint16_t)(*pdatatx16bits & (uint16_t)0x01FF);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           husart->pTxBuffPtr += 2U;
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           husart->Instance->DR = (uint8_t)(*husart->pTxBuffPtr++ & (uint8_t)0x00FF);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->TxXferCount--;
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         if (husart->TxXferCount == 0U)
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           CLEAR_BIT(husart->Instance->CR1, USART_CR1_TXEIE);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->RxXferCount != 0x00U)
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       if (__HAL_USART_GET_FLAG(husart, USART_FLAG_RXNE) != RESET)
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         if ((husart->Init.WordLength == USART_WORDLENGTH_9B) && (husart->Init.Parity == USART_PARITY_NONE))
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           pdatarx16bits = (uint16_t *) husart->pRxBuffPtr;
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           *pdatarx16bits = (uint16_t)(husart->Instance->DR & (uint16_t)0x01FF);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           husart->pRxBuffPtr += 2U;
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           if ((husart->Init.WordLength == USART_WORDLENGTH_9B) || ((husart->Init.WordLength == USART_WORDLENGTH_8B) && (husart->Init.Parity == USART_PARITY_NONE)))
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :             *husart->pRxBuffPtr = (uint8_t)(husart->Instance->DR & (uint8_t)0x00FF);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :             *husart->pRxBuffPtr = (uint8_t)(husart->Instance->DR & (uint8_t)0x007F);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :           husart->pRxBuffPtr += 1U;
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :         husart->RxXferCount--;
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     if (husart->RxXferCount == 0U)
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       CLEAR_BIT(husart->Instance->CR1, USART_CR1_RXNEIE);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       CLEAR_BIT(husart->Instance->CR1, USART_CR1_PEIE);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       CLEAR_BIT(husart->Instance->CR3, USART_CR3_EIE);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->State = HAL_USART_STATE_READY;
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       husart->TxRxCpltCallback(husart);
+USART_TransmitReceive_IT in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :       HAL_USART_TxRxCpltCallback(husart);
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2726 :   * @param  husart Pointer to a USART_HandleTypeDef structure that contains
+stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) line 2730 : static void USART_SetConfig(USART_HandleTypeDef *husart)
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_INSTANCE(husart->Instance));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_POLARITY(husart->Init.CLKPolarity));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_PHASE(husart->Init.CLKPhase));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_LASTBIT(husart->Init.CLKLastBit));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_BAUDRATE(husart->Init.BaudRate));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_WORD_LENGTH(husart->Init.WordLength));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_STOPBITS(husart->Init.StopBits));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_PARITY(husart->Init.Parity));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   assert_param(IS_USART_MODE(husart->Init.Mode));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR1, (USART_CR1_TE | USART_CR1_RE));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   tmpreg = husart->Instance->CR2;
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   /* Set CPOL bit according to husart->Init.CLKPolarity value */
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   /* Set CPHA bit according to husart->Init.CLKPhase value */
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   /* Set LBCL bit according to husart->Init.CLKLastBit value */
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   /* Set Stop Bits: Set STOP[13:12] bits according to husart->Init.StopBits value */
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   tmpreg |= (uint32_t)(USART_CLOCK_ENABLE | husart->Init.CLKPolarity |
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :                        husart->Init.CLKPhase | husart->Init.CLKLastBit | husart->Init.StopBits);
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   WRITE_REG(husart->Instance->CR2, (uint32_t)tmpreg);
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   tmpreg = husart->Instance->CR1;
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :      Set the M bits according to husart->Init.WordLength value
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :      Set PCE and PS bits according to husart->Init.Parity value
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :      Set TE and RE bits according to husart->Init.Mode value
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   tmpreg |= (uint32_t)husart->Init.WordLength | husart->Init.Parity | husart->Init.Mode;
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   WRITE_REG(husart->Instance->CR1, (uint32_t)tmpreg);
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   CLEAR_BIT(husart->Instance->CR3, (USART_CR3_RTSE | USART_CR3_CTSE));
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :   if((husart->Instance == USART1))
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->Instance->BRR = USART_BRR(pclk, husart->Init.BaudRate);
+USART_SetConfig in stm32f1xx_hal_usart.c (Drivers\STM32F1xx_HAL_Driver\Src) :     husart->Instance->BRR = USART_BRR(pclk, husart->Init.BaudRate);
+{anonUSART_InitTypeDef} in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :                                            - IntegerDivider = ((PCLKx) / (16 * (husart->Init.BaudRate)))
+__USART_HandleTypeDef in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :   void (* TxHalfCpltCallback)(struct __USART_HandleTypeDef *husart);        /*!< USART Tx Half Complete Callback        */
+__USART_HandleTypeDef in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :   void (* TxCpltCallback)(struct __USART_HandleTypeDef *husart);            /*!< USART Tx Complete Callback             */
+__USART_HandleTypeDef in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :   void (* RxHalfCpltCallback)(struct __USART_HandleTypeDef *husart);        /*!< USART Rx Half Complete Callback        */
+__USART_HandleTypeDef in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :   void (* RxCpltCallback)(struct __USART_HandleTypeDef *husart);            /*!< USART Rx Complete Callback             */
+__USART_HandleTypeDef in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :   void (* TxRxCpltCallback)(struct __USART_HandleTypeDef *husart);          /*!< USART Tx Rx Complete Callback          */
+__USART_HandleTypeDef in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :   void (* ErrorCallback)(struct __USART_HandleTypeDef *husart);             /*!< USART Error Callback                   */
+__USART_HandleTypeDef in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :   void (* AbortCpltCallback)(struct __USART_HandleTypeDef *husart);         /*!< USART Abort Complete Callback          */
+__USART_HandleTypeDef in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :   void (* MspInitCallback)(struct __USART_HandleTypeDef *husart);           /*!< USART Msp Init callback                */
+__USART_HandleTypeDef in stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) :   void (* MspDeInitCallback)(struct __USART_HandleTypeDef *husart);         /*!< USART Msp DeInit callback              */
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 163 : typedef  void (*pUSART_CallbackTypeDef)(USART_HandleTypeDef *husart);  /*!< pointer to an USART callback function */
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 492 : HAL_StatusTypeDef HAL_USART_Init(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 493 : HAL_StatusTypeDef HAL_USART_DeInit(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 494 : void HAL_USART_MspInit(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 495 : void HAL_USART_MspDeInit(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 499 : HAL_StatusTypeDef HAL_USART_RegisterCallback(USART_HandleTypeDef *husart, HAL_USART_CallbackIDTypeDef CallbackID,
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 501 : HAL_StatusTypeDef HAL_USART_UnRegisterCallback(USART_HandleTypeDef *husart, HAL_USART_CallbackIDTypeDef CallbackID);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 512 : HAL_StatusTypeDef HAL_USART_Transmit(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint16_t Size, uint32_t Timeout);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 513 : HAL_StatusTypeDef HAL_USART_Receive(USART_HandleTypeDef *husart, uint8_t *pRxData, uint16_t Size, uint32_t Timeout);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 514 : HAL_StatusTypeDef HAL_USART_TransmitReceive(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint8_t *pRxData,
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 516 : HAL_StatusTypeDef HAL_USART_Transmit_IT(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint16_t Size);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 517 : HAL_StatusTypeDef HAL_USART_Receive_IT(USART_HandleTypeDef *husart, uint8_t *pRxData, uint16_t Size);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 518 : HAL_StatusTypeDef HAL_USART_TransmitReceive_IT(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint8_t *pRxData,
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 520 : HAL_StatusTypeDef HAL_USART_Transmit_DMA(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint16_t Size);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 521 : HAL_StatusTypeDef HAL_USART_Receive_DMA(USART_HandleTypeDef *husart, uint8_t *pRxData, uint16_t Size);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 522 : HAL_StatusTypeDef HAL_USART_TransmitReceive_DMA(USART_HandleTypeDef *husart, const uint8_t *pTxData, uint8_t *pRxData,
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 524 : HAL_StatusTypeDef HAL_USART_DMAPause(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 525 : HAL_StatusTypeDef HAL_USART_DMAResume(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 526 : HAL_StatusTypeDef HAL_USART_DMAStop(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 528 : HAL_StatusTypeDef HAL_USART_Abort(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 529 : HAL_StatusTypeDef HAL_USART_Abort_IT(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 531 : void HAL_USART_IRQHandler(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 532 : void HAL_USART_TxCpltCallback(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 533 : void HAL_USART_TxHalfCpltCallback(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 534 : void HAL_USART_RxCpltCallback(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 535 : void HAL_USART_RxHalfCpltCallback(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 536 : void HAL_USART_TxRxCpltCallback(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 537 : void HAL_USART_ErrorCallback(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 538 : void HAL_USART_AbortCpltCallback(USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 547 : HAL_USART_StateTypeDef HAL_USART_GetState(const USART_HandleTypeDef *husart);
+stm32f1xx_hal_usart.h (Drivers\STM32F1xx_HAL_Driver\Inc) line 548 : uint32_t               HAL_USART_GetError(const USART_HandleTypeDef *husart);
