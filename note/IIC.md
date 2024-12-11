@@ -48,7 +48,7 @@
 
 **MPU6050 参考资料**
 
-- [MPU6000_MPU6050手册](./doc/MPU6000_MPU6050手册) 
+- [MPU6000_MPU6050手册](../doc/MPU6000_MPU6050手册) 
 
 **MPU6050 设备地址** 
 
@@ -88,4 +88,4 @@ HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress,
 
 #### 实验代码
 
- [MPU6050_WHO_AM_I](./source/MPU6050_WHO_AM_I) 
+ [MPU6050_WHO_AM_I](../source/MPU6050_WHO_AM_I) 

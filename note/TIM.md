@@ -169,7 +169,25 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 ![image-20241127174541509](./img/TIM/image-20241127174541509.png)
 
-测试代码保存在： [TIM_Interrupt](./source/TIM_Interrupt) 
+测试代码保存在： [TIM_Interrupt](../source/TIM_Interrupt) 
+
+
+
+## 定时器外部时钟
+
+基本定时器
+
+![image-20241128171721126](./img/TIM/image-20241128171721126.png)
+
+通用定时器/高级定时器
+
+![image-20241128172300361](./img/TIM/image-20241128172300361.png)
+
+TI1_ED 只能双边沿触发：
+
+![image-20241128172017698](./img/TIM/image-20241128172017698.png)
+
+
 
 
 
